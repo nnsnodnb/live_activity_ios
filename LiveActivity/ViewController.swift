@@ -32,6 +32,8 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
+    // MARK: - Private method
+
     private func requestAuthorization() {
         healthStore.requestAuthorization(toShare: nil, read: readDataTypes) { [unowned self] (success, error) in
             guard success, error == nil else {
