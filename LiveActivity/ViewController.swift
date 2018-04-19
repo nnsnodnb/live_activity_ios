@@ -12,7 +12,9 @@ import HealthKit
 class ViewController: UIViewController {
 
     private let healthStore = HKHealthStore()
-    let readDataTypes: Set<HKObjectType> = [
+    private let unit = HKUnit.degreeCelsius()
+    private let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
+    private let readDataTypes: Set<HKObjectType> = [
         HKWorkoutType.workoutType(),
         HKObjectType.quantityType(forIdentifier: .heartRate)!,
         HKObjectType.quantityType(forIdentifier: .bodyTemperature)!,
@@ -20,6 +22,7 @@ class ViewController: UIViewController {
     ]
 
     private var workouts = [HKWorkout]()
+    private var bodyTemperatures = [Double]()
 
     // MARK: - Life cycle
 
@@ -44,14 +47,21 @@ class ViewController: UIViewController {
     }
 
     private func getWorkouts() {
-        let predicate =  HKQuery.predicateForWorkouts(with: .other)
-        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
-        let sampleQuery = HKSampleQuery(sampleType: HKWorkoutType.workoutType(), predicate: predicate, limit: 0, sortDescriptors: [sortDescriptor]) { (query, samples, error) in
-            guard let workouts = samples as? [HKWorkout], error == nil else {
-                return
-            }
-            self.workouts = workouts
+        let predicate = HKQuery.predicateForWorkouts(with: .other)
+        let type = HKWorkoutType.workoutType()
+        let query = HKSampleQuery(sampleType: type, predicate: predicate, limit: 0, sortDescriptors: [sortDescriptor]) { [weak self] (query, samples, error) in
+            guard let wself = self, let workouts = samples as? [HKWorkout], error == nil else { return }
+            wself.workouts = workouts
         }
-        healthStore.execute(sampleQuery)
+        healthStore.execute(query)
+    }
+
+    private func getBodyTemperatures() {
+        guard let type = HKObjectType.quantityType(forIdentifier: .bodyTemperature) else { return }
+        let query = HKSampleQuery(sampleType: type, predicate: nil, limit: 0, sortDescriptors: [sortDescriptor]) { [weak self] (query, samples, error) in
+            guard let wself = self, let bodyTemperatures = samples as? [HKQuantitySample], error == nil else { return }
+            wself.bodyTemperatures = bodyTemperatures.map { $0.quantity.doubleValue(for: wself.unit) }
+        }
+        healthStore.execute(query)
     }
 }
