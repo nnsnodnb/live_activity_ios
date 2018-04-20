@@ -14,6 +14,7 @@
 		CF32DD222086184A0088395E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF32DD202086184A0088395E /* LaunchScreen.storyboard */; };
 		CF32DD2D2086184A0088395E /* LiveActivityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF32DD2C2086184A0088395E /* LiveActivityTests.swift */; };
 		CF32DD3A208618630088395E /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF32DD39208618630088395E /* HealthKit.framework */; };
+		CF4263962089F0DD00312C0F /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4263952089F0DD00312C0F /* HealthStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +40,7 @@
 		CF32DD2E2086184A0088395E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF32DD37208618630088395E /* LiveActivity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LiveActivity.entitlements; sourceTree = "<group>"; };
 		CF32DD39208618630088395E /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		CF4263952089F0DD00312C0F /* HealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 		CF32DD16208618490088395E /* LiveActivity */ = {
 			isa = PBXGroup;
 			children = (
+				CF4263942089F0B700312C0F /* Helper */,
 				CF32DD37208618630088395E /* LiveActivity.entitlements */,
 				CF32DD17208618490088395E /* AppDelegate.swift */,
 				CF32DD19208618490088395E /* ViewController.swift */,
@@ -108,6 +111,14 @@
 				CF32DD39208618630088395E /* HealthKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CF4263942089F0B700312C0F /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				CF4263952089F0DD00312C0F /* HealthStore.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF32DD1A208618490088395E /* ViewController.swift in Sources */,
+				CF4263962089F0DD00312C0F /* HealthStore.swift in Sources */,
 				CF32DD18208618490088395E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
