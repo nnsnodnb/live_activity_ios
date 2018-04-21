@@ -15,6 +15,8 @@
 		CF32DD2D2086184A0088395E /* LiveActivityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF32DD2C2086184A0088395E /* LiveActivityTests.swift */; };
 		CF32DD3A208618630088395E /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF32DD39208618630088395E /* HealthKit.framework */; };
 		CF4263962089F0DD00312C0F /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4263952089F0DD00312C0F /* HealthStore.swift */; };
+		CFDF0E9E208B11B500AD2F25 /* WorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0E9C208B11B500AD2F25 /* WorkoutTableViewCell.swift */; };
+		CFDF0E9F208B11B500AD2F25 /* WorkoutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFDF0E9D208B11B500AD2F25 /* WorkoutTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +43,8 @@
 		CF32DD37208618630088395E /* LiveActivity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LiveActivity.entitlements; sourceTree = "<group>"; };
 		CF32DD39208618630088395E /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		CF4263952089F0DD00312C0F /* HealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStore.swift; sourceTree = "<group>"; };
+		CFDF0E9C208B11B500AD2F25 /* WorkoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTableViewCell.swift; sourceTree = "<group>"; };
+		CFDF0E9D208B11B500AD2F25 /* WorkoutTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkoutTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				CF4263942089F0B700312C0F /* Helper */,
+				CFDF0E9B208B118B00AD2F25 /* UITableViewCell */,
 				CF32DD37208618630088395E /* LiveActivity.entitlements */,
 				CF32DD17208618490088395E /* AppDelegate.swift */,
 				CF32DD19208618490088395E /* ViewController.swift */,
@@ -119,6 +124,15 @@
 				CF4263952089F0DD00312C0F /* HealthStore.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		CFDF0E9B208B118B00AD2F25 /* UITableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CFDF0E9C208B11B500AD2F25 /* WorkoutTableViewCell.swift */,
+				CFDF0E9D208B11B500AD2F25 /* WorkoutTableViewCell.xib */,
+			);
+			path = UITableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,6 +224,7 @@
 				CF32DD222086184A0088395E /* LaunchScreen.storyboard in Resources */,
 				CF32DD1F2086184A0088395E /* Assets.xcassets in Resources */,
 				CF32DD1D208618490088395E /* Main.storyboard in Resources */,
+				CFDF0E9F208B11B500AD2F25 /* WorkoutTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +245,7 @@
 				CF32DD1A208618490088395E /* ViewController.swift in Sources */,
 				CF4263962089F0DD00312C0F /* HealthStore.swift in Sources */,
 				CF32DD18208618490088395E /* AppDelegate.swift in Sources */,
+				CFDF0E9E208B11B500AD2F25 /* WorkoutTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

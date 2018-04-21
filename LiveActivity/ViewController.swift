@@ -11,6 +11,8 @@ import HealthKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+
     private let unit = HKUnit.degreeCelsius()
     private var workouts = [HKWorkout]()
     private var bodyTemperatures = [Double]()
@@ -19,6 +21,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
         requestAuthorization()
     }
 
@@ -28,9 +31,14 @@ class ViewController: UIViewController {
 
     // MARK: - Private method
 
+    private func setupTableView() {
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: "WorkoutTableViewCell", bundle: nil), forCellReuseIdentifier: "WorkoutTableViewCell")
+    }
+
     private func requestAuthorization() {
         HealthStore.shared.requestAuthorization { [unowned self] (success, error) in
-            guard success, error != nil else { return }
+            guard success, error == nil else { return }
             self.getWorkouts()
         }
     }
@@ -41,6 +49,9 @@ class ViewController: UIViewController {
         HealthStore.shared.queryExecute(sampleType: type, predicate: predicate) { [weak self] (query, samples, error) in
             guard let wself = self, let workouts = samples as? [HKWorkout], error == nil else { return }
             wself.workouts = workouts
+            DispatchQueue.main.async {
+                wself.tableView.reloadData()
+            }
         }
     }
 
@@ -50,5 +61,20 @@ class ViewController: UIViewController {
             guard let wself = self, let bodyTemperatures = samples as? [HKQuantitySample], error == nil else { return }
             wself.bodyTemperatures = bodyTemperatures.map { $0.quantity.doubleValue(for: wself.unit) }
         }
+    }
+}
+
+// MARK: - UITableViewDataSource
+
+extension ViewController: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return workouts.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutTableViewCell", for: indexPath) as! WorkoutTableViewCell
+        cell.textLabel?.text = "\(workouts[indexPath.row].duration)"
+        return cell
     }
 }
