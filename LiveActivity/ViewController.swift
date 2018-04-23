@@ -62,6 +62,11 @@ class ViewController: UIViewController {
             wself.bodyTemperatures = bodyTemperatures.map { $0.quantity.doubleValue(for: wself.unit) }
         }
     }
+
+    private func convertToString(with interval: TimeInterval) -> String {
+        let time = NSInteger(interval)
+        return String(format: "%d時間%0.2d分%0.2d秒", time / 3600, time / 60 % 60, time % 60)
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -74,7 +79,7 @@ extension ViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutTableViewCell", for: indexPath) as! WorkoutTableViewCell
-        cell.textLabel?.text = "\(workouts[indexPath.row].duration)"
+        cell.textLabel?.text = "\(convertToString(with: workouts[indexPath.row].duration)))"
         return cell
     }
 }
