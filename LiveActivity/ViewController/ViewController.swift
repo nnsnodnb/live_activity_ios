@@ -88,5 +88,23 @@ extension ViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let alert = UIAlertController(title: "タイトルを入力", message: nil, preferredStyle: .alert)
+        alert.addTextField { [unowned self] (textField) in
+            textField.delegate = self
+        }
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "キャンセル", style: .cancel, handler: nil))
+        DispatchQueue.main.async { [unowned self] in
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+}
+
+// MARK: - UITextFieldDelegate
+
+extension ViewController: UITextFieldDelegate {
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+
     }
 }
