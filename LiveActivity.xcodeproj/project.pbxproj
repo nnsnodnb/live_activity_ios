@@ -93,9 +93,9 @@
 				CFE807FD208F743200637F4A /* Common */,
 				CF4263942089F0B700312C0F /* Helper */,
 				CFDF0E9B208B118B00AD2F25 /* UITableViewCell */,
+				CFE80800208F764000637F4A /* ViewController */,
 				CF32DD37208618630088395E /* LiveActivity.entitlements */,
 				CF32DD17208618490088395E /* AppDelegate.swift */,
-				CF32DD19208618490088395E /* ViewController.swift */,
 				CF32DD1B208618490088395E /* Main.storyboard */,
 				CF32DD1E2086184A0088395E /* Assets.xcassets */,
 				CF32DD202086184A0088395E /* LaunchScreen.storyboard */,
@@ -144,6 +144,14 @@
 				CFE807FE208F743F00637F4A /* Constants.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		CFE80800208F764000637F4A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CF32DD19208618490088395E /* ViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
