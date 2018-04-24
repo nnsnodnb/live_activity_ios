@@ -10,6 +10,9 @@ import UIKit
 
 class WorkoutTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var datetimeLabel: UILabel!
+    @IBOutlet weak var caloryLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }

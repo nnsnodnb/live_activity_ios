@@ -13,7 +13,9 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
-    private let unit = HKUnit.degreeCelsius()
+    private let degreeUnit = HKUnit.degreeCelsius()
+    private let energyUnit = HKUnit.kilocalorie()
+
     private var workouts = [HKWorkout]()
     private var bodyTemperatures = [Double]()
 
@@ -59,7 +61,7 @@ class ViewController: UIViewController {
         guard let type = HKObjectType.quantityType(forIdentifier: .bodyTemperature) else { return }
         HealthStore.shared.queryExecute(sampleType: type, predicate: nil) { [weak self] (query, samples, error) in
             guard let wself = self, let bodyTemperatures = samples as? [HKQuantitySample], error == nil else { return }
-            wself.bodyTemperatures = bodyTemperatures.map { $0.quantity.doubleValue(for: wself.unit) }
+            wself.bodyTemperatures = bodyTemperatures.map { $0.quantity.doubleValue(for: wself.degreeUnit) }
         }
     }
 
@@ -79,7 +81,8 @@ extension ViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutTableViewCell", for: indexPath) as! WorkoutTableViewCell
-        cell.textLabel?.text = "\(convertToString(with: workouts[indexPath.row].duration)))"
+        cell.datetimeLabel.text = "\(convertToString(with: workouts[indexPath.row].duration))"
+        cell.caloryLabel.text = String(format: "%.2fキロカロリー", workouts[indexPath.row].totalEnergyBurned?.doubleValue(for: energyUnit) ?? 0)
         return cell
     }
 }
