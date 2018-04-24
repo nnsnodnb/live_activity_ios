@@ -17,6 +17,7 @@
 		CF4263962089F0DD00312C0F /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4263952089F0DD00312C0F /* HealthStore.swift */; };
 		CFDF0E9E208B11B500AD2F25 /* WorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0E9C208B11B500AD2F25 /* WorkoutTableViewCell.swift */; };
 		CFDF0E9F208B11B500AD2F25 /* WorkoutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFDF0E9D208B11B500AD2F25 /* WorkoutTableViewCell.xib */; };
+		CFE807FF208F743F00637F4A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE807FE208F743F00637F4A /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		CF4263952089F0DD00312C0F /* HealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStore.swift; sourceTree = "<group>"; };
 		CFDF0E9C208B11B500AD2F25 /* WorkoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTableViewCell.swift; sourceTree = "<group>"; };
 		CFDF0E9D208B11B500AD2F25 /* WorkoutTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkoutTableViewCell.xib; sourceTree = "<group>"; };
+		CFE807FE208F743F00637F4A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 		CF32DD16208618490088395E /* LiveActivity */ = {
 			isa = PBXGroup;
 			children = (
+				CFE807FD208F743200637F4A /* Common */,
 				CF4263942089F0B700312C0F /* Helper */,
 				CFDF0E9B208B118B00AD2F25 /* UITableViewCell */,
 				CF32DD37208618630088395E /* LiveActivity.entitlements */,
@@ -133,6 +136,14 @@
 				CFDF0E9D208B11B500AD2F25 /* WorkoutTableViewCell.xib */,
 			);
 			path = UITableViewCell;
+			sourceTree = "<group>";
+		};
+		CFE807FD208F743200637F4A /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CFE807FE208F743F00637F4A /* Constants.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,6 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFE807FF208F743F00637F4A /* Constants.swift in Sources */,
 				CF32DD1A208618490088395E /* ViewController.swift in Sources */,
 				CF4263962089F0DD00312C0F /* HealthStore.swift in Sources */,
 				CF32DD18208618490088395E /* AppDelegate.swift in Sources */,

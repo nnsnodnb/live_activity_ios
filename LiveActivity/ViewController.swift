@@ -13,9 +13,6 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
-    private let degreeUnit = HKUnit.degreeCelsius()
-    private let energyUnit = HKUnit.kilocalorie()
-
     private var workouts = [HKWorkout]()
     private var bodyTemperatures = [Double]()
 
@@ -35,7 +32,11 @@ class ViewController: UIViewController {
 
     private func setupTableView() {
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.register(UINib(nibName: "WorkoutTableViewCell", bundle: nil), forCellReuseIdentifier: "WorkoutTableViewCell")
+        tableView.rowHeight = 80
+        tableView.estimatedRowHeight = UITableViewAutomaticDimension
+        tableView.tableFooterView = UIView()
     }
 
     private func requestAuthorization() {
@@ -61,13 +62,8 @@ class ViewController: UIViewController {
         guard let type = HKObjectType.quantityType(forIdentifier: .bodyTemperature) else { return }
         HealthStore.shared.queryExecute(sampleType: type, predicate: nil) { [weak self] (query, samples, error) in
             guard let wself = self, let bodyTemperatures = samples as? [HKQuantitySample], error == nil else { return }
-            wself.bodyTemperatures = bodyTemperatures.map { $0.quantity.doubleValue(for: wself.degreeUnit) }
+            wself.bodyTemperatures = bodyTemperatures.map { $0.quantity.doubleValue(for: Constants.degreeUnit) }
         }
-    }
-
-    private func convertToString(with interval: TimeInterval) -> String {
-        let time = NSInteger(interval)
-        return String(format: "%d時間%0.2d分%0.2d秒", time / 3600, time / 60 % 60, time % 60)
     }
 }
 
@@ -81,8 +77,16 @@ extension ViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutTableViewCell", for: indexPath) as! WorkoutTableViewCell
-        cell.datetimeLabel.text = "\(convertToString(with: workouts[indexPath.row].duration))"
-        cell.caloryLabel.text = String(format: "%.2fキロカロリー", workouts[indexPath.row].totalEnergyBurned?.doubleValue(for: energyUnit) ?? 0)
+        cell.setConfigure(workouts[indexPath.row])
         return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension ViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
