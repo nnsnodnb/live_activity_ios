@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  WorkoutViewController.swift
 //  LiveActivity
 //
 //  Created by Oka Yuya on 2018/04/17.
@@ -9,7 +9,7 @@
 import UIKit
 import HealthKit
 
-class ViewController: UIViewController {
+class WorkoutViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
@@ -69,7 +69,7 @@ class ViewController: UIViewController {
 
 // MARK: - UITableViewDataSource
 
-extension ViewController: UITableViewDataSource {
+extension WorkoutViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return workouts.count
@@ -84,7 +84,7 @@ extension ViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 
-extension ViewController: UITableViewDelegate {
+extension WorkoutViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -102,7 +102,7 @@ extension ViewController: UITableViewDelegate {
 
 // MARK: - UITextFieldDelegate
 
-extension ViewController: UITextFieldDelegate {
+extension WorkoutViewController: UITextFieldDelegate {
 
     func textFieldDidEndEditing(_ textField: UITextField) {
 
