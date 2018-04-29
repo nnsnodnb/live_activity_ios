@@ -15,6 +15,7 @@ class WorkoutViewController: UIViewController {
 
     private var workouts = [HKWorkout]()
     private var bodyTemperatures = [Double]()
+    private var selectWorkout: HKWorkout?
 
     // MARK: - Life cycle
 
@@ -88,8 +89,11 @@ extension WorkoutViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        selectWorkout = workouts[indexPath.row]
         let alert = UIAlertController(title: "タイトルを入力", message: nil, preferredStyle: .alert)
         alert.addTextField { [unowned self] (textField) in
+            let dateKey = DateFormatter.standard.string(from: self.selectWorkout!.startDate)
+            textField.text = UserDefaults.standard.string(forKey: dateKey)
             textField.delegate = self
         }
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -105,6 +109,10 @@ extension WorkoutViewController: UITableViewDelegate {
 extension WorkoutViewController: UITextFieldDelegate {
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-
+        guard let workout = selectWorkout else { return }
+        let dateKey = DateFormatter.standard.string(from: workout.startDate)
+        UserDefaults.standard.set(textField.text, forKey: dateKey)
+        UserDefaults.standard.synchronize()
+        selectWorkout = nil
     }
 }
