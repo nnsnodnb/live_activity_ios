@@ -21,7 +21,8 @@ class HealthStore {
         HKWorkoutType.workoutType(),
         HKObjectType.quantityType(forIdentifier: .heartRate)!,
         HKObjectType.quantityType(forIdentifier: .bodyTemperature)!,
-        HKObjectType.quantityType(forIdentifier: .respiratoryRate)!
+        HKObjectType.quantityType(forIdentifier: .respiratoryRate)!,
+        HKObjectType.quantityType(forIdentifier: .heartRate)!
     ]
 
     func requestAuthorization(completion: @escaping RequestCompletion) {
