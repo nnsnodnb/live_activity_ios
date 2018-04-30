@@ -33,4 +33,8 @@ class HealthStore {
         let query = HKSampleQuery(sampleType: sampleType, predicate: predicate, limit: 0, sortDescriptors: [sortDescriptor], resultsHandler: resultsHanlder)
         healthStore.execute(query)
     }
+
+    func execute<T: HKQuery>(query: T) {
+        healthStore.execute(query)
+    }
 }

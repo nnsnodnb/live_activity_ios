@@ -44,6 +44,7 @@ class WorkoutViewController: UIViewController {
         HealthStore.shared.requestAuthorization { [unowned self] (success, error) in
             guard success, error == nil else { return }
             self.getWorkouts()
+            self.getHeartRates()
         }
     }
 
@@ -57,6 +58,18 @@ class WorkoutViewController: UIViewController {
                 wself.tableView.reloadData()
             }
         }
+    }
+
+    private func getHeartRates() {
+        guard let type = HKObjectType.quantityType(forIdentifier: .heartRate) else { return }
+        let query = HKStatisticsQuery(quantityType: type, quantitySamplePredicate: nil, options: [.discreteMin, .discreteMax]) { (query, statics, error) in
+            guard let statics = statics, error == nil else { return }
+
+            print(DateFormatter.standard.string(from: statics.startDate))
+            print(statics.minimumQuantity()?.doubleValue(for: HKUnit(from: "count/min")))
+            print(statics.maximumQuantity()?.doubleValue(for: HKUnit(from: "count/min")))
+        }
+        HealthStore.shared.execute(query: query)
     }
 
     private func getBodyTemperatures() {
