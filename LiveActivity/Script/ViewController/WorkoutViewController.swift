@@ -64,22 +64,15 @@ class WorkoutViewController: UIViewController {
     private func getHeartRates(workout: HKWorkout) {
         guard let type = HKObjectType.quantityType(forIdentifier: .heartRate) else { return }
         let predicate = HKQuery.predicateForSamples(withStart: workout.startDate, end: workout.endDate, options: .strictStartDate)
-        let query = HKStatisticsQuery(quantityType: type, quantitySamplePredicate: predicate, options: [.discreteMin, .discreteMax]) { [weak self] (query, statics, error) in
+        let query = HKStatisticsQuery(quantityType: type, quantitySamplePredicate: predicate, options: [.discreteAverage, .discreteMin, .discreteMax]) { [weak self] (query, statics, error) in
             guard let wself = self, let statics = statics, error == nil else { return }
             wself.statistics.append(statics)
             print(DateFormatter.display.string(from: statics.startDate))
-            print("最低値 \(statics.minimumQuantity()?.doubleValue(for: HKUnit(from: "count/min")) ?? 0) bpm")
-            print("最高値 \(statics.maximumQuantity()?.doubleValue(for: HKUnit(from: "count/min")) ?? 0) bpm")
+            print("最低値 \(statics.minimumQuantity()?.doubleValue(for: HealthStore.bpmUnit) ?? 0) bpm")
+            print("最高値 \(statics.maximumQuantity()?.doubleValue(for: HealthStore.bpmUnit) ?? 0) bpm")
+            print("平均値 \(statics.averageQuantity()?.doubleValue(for: HealthStore.bpmUnit) ?? 0) bpm")
         }
         HealthStore.shared.execute(query: query)
-    }
-
-    private func getBodyTemperatures() {
-        guard let type = HKObjectType.quantityType(forIdentifier: .bodyTemperature) else { return }
-        HealthStore.shared.queryExecute(sampleType: type, predicate: nil) { [weak self] (query, samples, error) in
-            guard let wself = self, let bodyTemperatures = samples as? [HKQuantitySample], error == nil else { return }
-            wself.bodyTemperatures = bodyTemperatures.map { $0.quantity.doubleValue(for: Constants.degreeUnit) }
-        }
     }
 }
 
