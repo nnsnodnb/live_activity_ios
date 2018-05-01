@@ -9,9 +9,7 @@
 import UIKit
 import HealthKit
 
-class WorkoutViewController: UIViewController {
-
-    @IBOutlet weak var tableView: UITableView!
+class WorkoutViewController: UITableViewController {
 
     private var workouts = [HKWorkout]()
     private var statistics = [HKStatistics]()
@@ -78,13 +76,13 @@ class WorkoutViewController: UIViewController {
 
 // MARK: - UITableViewDataSource
 
-extension WorkoutViewController: UITableViewDataSource {
+extension WorkoutViewController {
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return workouts.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutTableViewCell", for: indexPath) as! WorkoutTableViewCell
         cell.setConfigure(workouts[indexPath.row])
         return cell
@@ -93,9 +91,9 @@ extension WorkoutViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 
-extension WorkoutViewController: UITableViewDelegate {
+extension WorkoutViewController {
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         selectWorkout = workouts[indexPath.row]
         let alert = UIAlertController(title: "タイトルを入力", message: nil, preferredStyle: .alert)
