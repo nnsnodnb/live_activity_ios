@@ -14,7 +14,7 @@ class WorkoutViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     private var workouts = [HKWorkout]()
-    private var statistics = [HKStatistics?]()
+    private var statistics = [HKStatistics]()
     private var bodyTemperatures = [Double]()
     private var selectWorkout: HKWorkout?
 
