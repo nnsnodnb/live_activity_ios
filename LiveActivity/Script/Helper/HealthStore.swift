@@ -14,15 +14,13 @@ typealias QueryResultsHanlder = (HKSampleQuery, [HKSample]?, Error?) -> Void
 class HealthStore {
 
     static let shared = HealthStore()
+    static let bpmUnit = HKUnit(from: "count/min")
 
     private let healthStore = HKHealthStore()
     private let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
     private let readDataTypes: Set<HKObjectType> = [
         HKWorkoutType.workoutType(),
         HKObjectType.quantityType(forIdentifier: .heartRate)!,
-        HKObjectType.quantityType(forIdentifier: .bodyTemperature)!,
-        HKObjectType.quantityType(forIdentifier: .respiratoryRate)!,
-        HKObjectType.quantityType(forIdentifier: .heartRate)!
     ]
 
     func requestAuthorization(completion: @escaping RequestCompletion) {
