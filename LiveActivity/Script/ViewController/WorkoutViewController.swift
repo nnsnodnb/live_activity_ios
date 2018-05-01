@@ -14,6 +14,7 @@ class WorkoutViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     private var workouts = [HKWorkout]()
+    private var statistics = [HKStatistics?]()
     private var bodyTemperatures = [Double]()
     private var selectWorkout: HKWorkout?
 
@@ -44,7 +45,6 @@ class WorkoutViewController: UIViewController {
         HealthStore.shared.requestAuthorization { [unowned self] (success, error) in
             guard success, error == nil else { return }
             self.getWorkouts()
-            self.getHeartRates()
         }
     }
 
@@ -53,18 +53,20 @@ class WorkoutViewController: UIViewController {
         let predicate = HKQuery.predicateForWorkouts(with: .other)
         HealthStore.shared.queryExecute(sampleType: type, predicate: predicate) { [weak self] (query, samples, error) in
             guard let wself = self, let workouts = samples as? [HKWorkout], error == nil else { return }
-            wself.workouts = workouts
+            wself.workouts = workouts.reversed()
+            wself.workouts.forEach { wself.getHeartRates(workout: $0) }
             DispatchQueue.main.async {
                 wself.tableView.reloadData()
             }
         }
     }
 
-    private func getHeartRates() {
+    private func getHeartRates(workout: HKWorkout) {
         guard let type = HKObjectType.quantityType(forIdentifier: .heartRate) else { return }
-        let query = HKStatisticsQuery(quantityType: type, quantitySamplePredicate: nil, options: [.discreteMin, .discreteMax]) { (query, statics, error) in
-            guard let statics = statics, error == nil else { return }
-
+        let predicate = HKQuery.predicateForSamples(withStart: workout.startDate, end: workout.endDate, options: .strictStartDate)
+        let query = HKStatisticsQuery(quantityType: type, quantitySamplePredicate: predicate, options: [.discreteMin, .discreteMax]) { [weak self] (query, statics, error) in
+            guard let wself = self, let statics = statics, error == nil else { return }
+            wself.statistics.append(statics)
             print(DateFormatter.standard.string(from: statics.startDate))
             print(statics.minimumQuantity()?.doubleValue(for: HKUnit(from: "count/min")))
             print(statics.maximumQuantity()?.doubleValue(for: HKUnit(from: "count/min")))
