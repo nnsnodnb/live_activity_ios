@@ -67,9 +67,9 @@ class WorkoutViewController: UIViewController {
         let query = HKStatisticsQuery(quantityType: type, quantitySamplePredicate: predicate, options: [.discreteMin, .discreteMax]) { [weak self] (query, statics, error) in
             guard let wself = self, let statics = statics, error == nil else { return }
             wself.statistics.append(statics)
-            print(DateFormatter.standard.string(from: statics.startDate))
-            print(statics.minimumQuantity()?.doubleValue(for: HKUnit(from: "count/min")))
-            print(statics.maximumQuantity()?.doubleValue(for: HKUnit(from: "count/min")))
+            print(DateFormatter.display.string(from: statics.startDate))
+            print("最低値 \(statics.minimumQuantity()?.doubleValue(for: HKUnit(from: "count/min")) ?? 0) bpm")
+            print("最高値 \(statics.maximumQuantity()?.doubleValue(for: HKUnit(from: "count/min")) ?? 0) bpm")
         }
         HealthStore.shared.execute(query: query)
     }
