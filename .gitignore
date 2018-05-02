@@ -57,3 +57,8 @@ xcuserdata/
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
 
+### Carthage ###
+Carthage/Checkouts/
+Carthage/Build/iOS/*.dSYM/
+Carthage/Build/iOS/*.bcsymbolmap
+!Carthage/Build/iOS/*.framework/*

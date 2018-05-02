@@ -13,6 +13,7 @@
 		CF32DD222086184A0088395E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF32DD202086184A0088395E /* LaunchScreen.storyboard */; };
 		CF32DD2D2086184A0088395E /* LiveActivityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF32DD2C2086184A0088395E /* LiveActivityTests.swift */; };
 		CF32DD3A208618630088395E /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF32DD39208618630088395E /* HealthKit.framework */; };
+		CF3BA87E209A17C30098804E /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF3BA87D209A17C30098804E /* Charts.framework */; };
 		CF4263962089F0DD00312C0F /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4263952089F0DD00312C0F /* HealthStore.swift */; };
 		CFA0FF9B20949ED3006299D1 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0FF9A20949ED3006299D1 /* DateFormatter+Extension.swift */; };
 		CFA8744C2090ACFA002E8ADE /* Workout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFA8744B2090ACFA002E8ADE /* Workout.storyboard */; };
@@ -43,6 +44,7 @@
 		CF32DD2E2086184A0088395E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF32DD37208618630088395E /* LiveActivity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LiveActivity.entitlements; sourceTree = "<group>"; };
 		CF32DD39208618630088395E /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		CF3BA87D209A17C30098804E /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = Carthage/Build/iOS/Charts.framework; sourceTree = "<group>"; };
 		CF4263952089F0DD00312C0F /* HealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStore.swift; sourceTree = "<group>"; };
 		CFA0FF9A20949ED3006299D1 /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
 		CFA8744B2090ACFA002E8ADE /* Workout.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Workout.storyboard; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF3BA87E209A17C30098804E /* Charts.framework in Frameworks */,
 				CF32DD3A208618630088395E /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,6 +115,7 @@
 		CF32DD38208618630088395E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF3BA87D209A17C30098804E /* Charts.framework */,
 				CF32DD39208618630088395E /* HealthKit.framework */,
 			);
 			name = Frameworks;
@@ -199,6 +203,7 @@
 				CF32DD10208618490088395E /* Sources */,
 				CF32DD11208618490088395E /* Frameworks */,
 				CF32DD12208618490088395E /* Resources */,
+				CF3BA87F209A17D10098804E /* Run Script (Carthage) */,
 			);
 			buildRules = (
 			);
@@ -290,6 +295,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CF3BA87F209A17D10098804E /* Run Script (Carthage) */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Charts.framework",
+			);
+			name = "Run Script (Carthage)";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CF32DD10208618490088395E /* Sources */ = {
@@ -456,6 +479,10 @@
 				CODE_SIGN_ENTITLEMENTS = LiveActivity/Resource/LiveActivity.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 99649YXF6E;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = LiveActivity/Resource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -476,6 +503,10 @@
 				CODE_SIGN_ENTITLEMENTS = LiveActivity/Resource/LiveActivity.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 99649YXF6E;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = LiveActivity/Resource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
