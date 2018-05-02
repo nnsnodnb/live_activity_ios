@@ -62,3 +62,6 @@ Carthage/Checkouts/
 Carthage/Build/iOS/*.dSYM/
 Carthage/Build/iOS/*.bcsymbolmap
 !Carthage/Build/iOS/*.framework/*
+
+### LicensePlist ###
+com.mono0926.LicensePlist.latest_result.txt
