@@ -13,6 +13,12 @@ import SVProgressHUD
 
 class DetailViewController: UIViewController {
 
+    enum HeartRateType {
+        case minimum
+        case maximum
+        case average
+    }
+
     @IBOutlet weak var activityNameLabel: UILabel!
     @IBOutlet weak var activityTimeLabel: UILabel!
     @IBOutlet weak var activityPlayTimeLabel: UILabel!
@@ -26,6 +32,11 @@ class DetailViewController: UIViewController {
     var statistic: HKStatistics!
 
     private var statistics = [HKStatistics]()
+    private var heartRateType: HeartRateType = .average {
+        didSet {
+            setDataSet()
+        }
+    }
 
     // MARK: - Life cycle
 
@@ -133,7 +144,16 @@ class DetailViewController: UIViewController {
         // nilのものを予め削除しておく
         let statistics = self.statistics.filter { $0.averageQuantity() != nil }
         let values: [ChartDataEntry] = (0..<statistics.count).map {
-            let value = statistics[$0].averageQuantity()?.doubleValue(for: HealthStore.bpmUnit) ?? 0
+            let quantity: HKQuantity?
+            switch heartRateType {
+            case .minimum:
+                quantity = statistics[$0].minimumQuantity()
+            case .maximum:
+                quantity = statistics[$0].maximumQuantity()
+            case .average:
+                quantity = statistics[$0].averageQuantity()
+            }
+            let value = quantity?.doubleValue(for: HealthStore.bpmUnit) ?? 0
             return ChartDataEntry(x: Double($0), y: Double(String(format: "%.2f", value))!)
         }
 
