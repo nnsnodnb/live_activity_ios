@@ -59,7 +59,7 @@ class WorkoutViewController: UITableViewController {
             wself.workouts.forEach { wself.getHeartRates(workout: $0) }
             DispatchQueue.main.async {
                 wself.tableView.reloadData()
-                SVProgressHUD.dismiss()
+                SVProgressHUD.dismiss(withDelay: 0.5)
             }
         }
     }
@@ -91,6 +91,12 @@ class WorkoutViewController: UITableViewController {
         DispatchQueue.main.async { [unowned self] in
             self.present(alert, animated: true, completion: nil)
         }
+    }
+
+    // MARK: - IBAction
+
+    @IBAction func onTapRefreshButton(_ sender: Any) {
+        getWorkouts()
     }
 }
 
