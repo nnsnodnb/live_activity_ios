@@ -35,7 +35,7 @@ class WorkoutViewController: UITableViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "WorkoutTableViewCell", bundle: nil), forCellReuseIdentifier: "WorkoutTableViewCell")
-        tableView.rowHeight = 80
+        tableView.rowHeight = 183
         tableView.estimatedRowHeight = UITableViewAutomaticDimension
         tableView.tableFooterView = UIView()
     }
@@ -77,6 +77,21 @@ class WorkoutViewController: UITableViewController {
         }
         HealthStore.shared.execute(query: query)
     }
+
+    private func showUpdateActivityNameAlert(with workout: HKWorkout) {
+        selectWorkout = workout
+        let alert = UIAlertController(title: "タイトルを入力", message: nil, preferredStyle: .alert)
+        alert.addTextField { [unowned self] (textField) in
+            let dateKey = DateFormatter.standard.string(from: workout.startDate)
+            textField.text = UserDefaults.standard.string(forKey: dateKey)
+            textField.delegate = self
+        }
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "キャンセル", style: .cancel, handler: nil))
+        DispatchQueue.main.async { [unowned self] in
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -90,6 +105,9 @@ extension WorkoutViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutTableViewCell", for: indexPath) as! WorkoutTableViewCell
         cell.setConfigure(workouts[indexPath.row])
+        cell.updateActivityNameHandler = { [unowned self] in
+            self.showUpdateActivityNameAlert(with: $0)
+        }
         return cell
     }
 }
@@ -100,21 +118,9 @@ extension WorkoutViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        selectWorkout = workouts[indexPath.row]
         let detailViewController = DetailViewController()
-        detailViewController.workout = selectWorkout
+        detailViewController.workout = workouts[indexPath.row]
         navigationController?.pushViewController(detailViewController, animated: true)
-//        let alert = UIAlertController(title: "タイトルを入力", message: nil, preferredStyle: .alert)
-//        alert.addTextField { [unowned self] (textField) in
-//            let dateKey = DateFormatter.standard.string(from: self.selectWorkout!.startDate)
-//            textField.text = UserDefaults.standard.string(forKey: dateKey)
-//            textField.delegate = self
-//        }
-//        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-//        alert.addAction(UIAlertAction(title: "キャンセル", style: .cancel, handler: nil))
-//        DispatchQueue.main.async { [unowned self] in
-//            self.present(alert, animated: true, completion: nil)
-//        }
     }
 }
 

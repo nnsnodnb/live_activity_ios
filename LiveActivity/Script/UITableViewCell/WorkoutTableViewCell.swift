@@ -16,6 +16,7 @@ class WorkoutTableViewCell: UITableViewCell {
     @IBOutlet weak var caloryLabel: UILabel!
 
     var workout: HKWorkout!
+    var updateActivityNameHandler: ((HKWorkout) -> Void)?
 
     // MARK: - Life cycle
 
@@ -46,5 +47,11 @@ class WorkoutTableViewCell: UITableViewCell {
     private func convertToString(with interval: TimeInterval) -> String {
         let time = NSInteger(interval)
         return String(format: "%d時間%0.2d分%0.2d秒", time / 3600, time / 60 % 60, time % 60)
+    }
+
+    // MARK: - IBAction
+
+    @IBAction func onTapUpdateActivityNameButton(_ sender: Any) {
+        updateActivityNameHandler?(workout)
     }
 }

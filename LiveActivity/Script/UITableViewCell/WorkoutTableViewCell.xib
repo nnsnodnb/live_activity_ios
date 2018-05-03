@@ -13,15 +13,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WorkoutTableViewCell" rowHeight="80" id="KGk-i7-Jjw" customClass="WorkoutTableViewCell" customModule="LiveActivity" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="WorkoutTableViewCell" rowHeight="183" id="KGk-i7-Jjw" customClass="WorkoutTableViewCell" customModule="LiveActivity" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="186"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="286" height="185.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S9C-N0-dSL">
-                        <rect key="frame" x="16" y="11" width="0.0" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yyyy年mm月dd日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S9C-N0-dSL">
+                        <rect key="frame" x="16" y="11" width="139" height="21"/>
                         <color key="backgroundColor" red="0.99215686274509807" green="0.63857329508240501" blue="0.24488320888173334" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="D6S-4O-1Co"/>
@@ -36,28 +36,58 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ttv-oD-r5Z">
-                        <rect key="frame" x="16" y="40" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0nV-vG-ILH">
-                        <rect key="frame" x="262" y="40" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6Gh-dc-FyB">
+                        <rect key="frame" x="16" y="40" width="254" height="88"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="idol_fan_penlight_sougankyou" translatesAutoresizingMaskIntoConstraints="NO" id="ibL-UB-RmH">
+                                <rect key="frame" x="0.0" y="0.0" width="88" height="88"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="88" id="GK8-Nn-XSK"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hNv-6v-Wai">
+                                <rect key="frame" x="96" y="0.0" width="158" height="88"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="xxx Cal." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0nV-vG-ILH">
+                                        <rect key="frame" x="37.5" y="0.0" width="120.5" height="59.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="33"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="h時間mm分ss秒" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ttv-oD-r5Z">
+                                        <rect key="frame" x="33" y="67.5" width="125" height="20.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20.5" id="CiO-6A-ooX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                    </stackView>
+                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DzC-VY-Zno">
+                        <rect key="frame" x="174" y="136" width="96" height="31"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="96" id="0nY-Su-Fz7"/>
+                            <constraint firstAttribute="height" constant="31" id="7wk-rT-QRa"/>
+                        </constraints>
+                        <state key="normal" image="update_activity_name"/>
+                        <connections>
+                            <action selector="onTapUpdateActivityNameButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="d8k-CH-zKh"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="ttv-oD-r5Z" firstAttribute="leading" secondItem="S9C-N0-dSL" secondAttribute="leading" id="9Xl-vr-Ier"/>
-                    <constraint firstItem="0nV-vG-ILH" firstAttribute="top" secondItem="ttv-oD-r5Z" secondAttribute="top" id="DVz-Y5-vG0"/>
-                    <constraint firstItem="0nV-vG-ILH" firstAttribute="bottom" secondItem="ttv-oD-r5Z" secondAttribute="bottom" id="H8a-Wy-w1W"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="ttv-oD-r5Z" secondAttribute="bottom" constant="8" id="OdM-kS-HdB"/>
                     <constraint firstItem="S9C-N0-dSL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="QD5-jK-Fuf"/>
+                    <constraint firstItem="DzC-VY-Zno" firstAttribute="top" secondItem="6Gh-dc-FyB" secondAttribute="bottom" constant="8" id="UmH-b8-T3b"/>
                     <constraint firstItem="S9C-N0-dSL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="Utk-1w-w9U"/>
-                    <constraint firstItem="0nV-vG-ILH" firstAttribute="centerY" secondItem="ttv-oD-r5Z" secondAttribute="centerY" id="blH-Pc-KC8"/>
-                    <constraint firstItem="0nV-vG-ILH" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="og8-xF-rX6"/>
+                    <constraint firstItem="6Gh-dc-FyB" firstAttribute="top" secondItem="S9C-N0-dSL" secondAttribute="bottom" constant="8" id="Zg4-I6-QEN"/>
+                    <constraint firstItem="DzC-VY-Zno" firstAttribute="trailing" secondItem="6Gh-dc-FyB" secondAttribute="trailing" id="b20-wY-oY1"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="6Gh-dc-FyB" secondAttribute="trailing" constant="8" id="qny-RW-Ij3"/>
+                    <constraint firstItem="6Gh-dc-FyB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="vL4-BT-n7Y"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="DzC-VY-Zno" secondAttribute="bottom" constant="8" id="wBw-jg-6HW"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -66,7 +96,11 @@
                 <outlet property="datetimeLabel" destination="ttv-oD-r5Z" id="Zxd-iF-WCb"/>
                 <outlet property="eventStartLabel" destination="S9C-N0-dSL" id="mwN-x9-KrN"/>
             </connections>
-            <point key="canvasLocation" x="34" y="36"/>
+            <point key="canvasLocation" x="34" y="88.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="idol_fan_penlight_sougankyou" width="156" height="200"/>
+        <image name="update_activity_name" width="389" height="129"/>
+    </resources>
 </document>
