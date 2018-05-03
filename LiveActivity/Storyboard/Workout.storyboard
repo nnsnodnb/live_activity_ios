@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Workout View Controller-->
+        <!--推し事一覧-->
         <scene sceneID="q3N-a8-eHj">
             <objects>
                 <tableViewController storyboardIdentifier="WorkoutViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uAy-1X-cSV" customClass="WorkoutViewController" customModule="LiveActivity" customModuleProvider="target" sceneMemberID="viewController">
@@ -22,7 +22,7 @@
                             <outlet property="delegate" destination="uAy-1X-cSV" id="bZ2-mP-lhf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="KzC-Li-uDS"/>
+                    <navigationItem key="navigationItem" title="推し事一覧" id="KzC-Li-uDS"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kQ5-v4-zCf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -33,8 +33,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vke-K9-rqc" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="c1q-24-FzT">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="c1q-24-FzT">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
