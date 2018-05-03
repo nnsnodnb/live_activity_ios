@@ -27,4 +27,22 @@ extension DateFormatter {
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
         return formatter
     }
+
+    static var withOutDate: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .gregorian)
+        formatter.timeZone = NSTimeZone.system
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "HH:mm"
+        return formatter
+    }
+
+    static var title: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .gregorian)
+        formatter.timeZone = NSTimeZone.system
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "yyyy年MM月dd日"
+        return formatter
+    }
 }

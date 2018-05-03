@@ -13,9 +13,17 @@ import SVProgressHUD
 
 class DetailViewController: UIViewController {
 
+    @IBOutlet weak var activityNameLabel: UILabel!
+    @IBOutlet weak var activityTimeLabel: UILabel!
+    @IBOutlet weak var activityPlayTimeLabel: UILabel!
+    @IBOutlet weak var totalCalorieLabel: UILabel!
+    @IBOutlet weak var minHeartRateLabel: UILabel!
+    @IBOutlet weak var maxHeartRateLabel: UILabel!
+    @IBOutlet weak var averateHeartRateLabel: UILabel!
     @IBOutlet weak var chartView: LineChartView!
 
     var workout: HKWorkout!
+    var statistic: HKStatistics!
 
     private var statistics = [HKStatistics]()
 
@@ -23,6 +31,8 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTitle()
+        setupLabels()
         getHeartRates()
         chartView.isHidden = true
         setupChartView()
@@ -33,6 +43,36 @@ class DetailViewController: UIViewController {
     }
 
     // MARK: - Private method
+
+    private func setupTitle() {
+        let calendar = Calendar(identifier: .gregorian)
+        let component = calendar.component(.weekday, from: workout.startDate)
+        let weekdaySymbolIndex = component - 1
+        let formatter: DateFormatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ja")
+        title = "\(DateFormatter.title.string(from: workout.startDate))(\(formatter.shortWeekdaySymbols[weekdaySymbolIndex]))"
+    }
+
+    private func setupLabels() {
+        let dateKey = DateFormatter.standard.string(from: workout.startDate)
+        if let name = UserDefaults.standard.string(forKey: dateKey), name != "" {
+            activityNameLabel.text = name
+        } else {
+            activityNameLabel.text = "不明な推し事"
+        }
+
+        let startDateString = DateFormatter.withOutDate.string(from: workout.startDate)
+        let endDateString = DateFormatter.withOutDate.string(from: workout.endDate)
+        activityTimeLabel.text = "\(startDateString) 〜 \(endDateString)"
+
+        activityPlayTimeLabel.text = "\(workout.duration.convertToDateTime(format: "%d時間%0.2d分%0.2d秒"))"
+
+        totalCalorieLabel.text = String(format: "%.2f カロリー", workout.totalEnergyBurned?.doubleValue(for: HealthStore.energyUnit) ?? 0)
+
+        minHeartRateLabel.text = String(format: "%.0fBPM", statistic.minimumQuantity()?.doubleValue(for: HealthStore.bpmUnit) ?? 0)
+        maxHeartRateLabel.text = String(format: "%.0fBPM", statistic.maximumQuantity()?.doubleValue(for: HealthStore.bpmUnit) ?? 0)
+        averateHeartRateLabel.text = String(format: "%.2fBPM", statistic.averageQuantity()?.doubleValue(for: HealthStore.bpmUnit) ?? 0)
+    }
 
     private func getHeartRates() {
         SVProgressHUD.show()

@@ -25,7 +25,7 @@
 		CFA8744C2090ACFA002E8ADE /* Workout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFA8744B2090ACFA002E8ADE /* Workout.storyboard */; };
 		CFDF0E9E208B11B500AD2F25 /* WorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0E9C208B11B500AD2F25 /* WorkoutTableViewCell.swift */; };
 		CFDF0E9F208B11B500AD2F25 /* WorkoutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFDF0E9D208B11B500AD2F25 /* WorkoutTableViewCell.xib */; };
-		CFE807FF208F743F00637F4A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE807FE208F743F00637F4A /* Constants.swift */; };
+		CFF1BE92209B8E7000EA2F6A /* TimeInterval+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF1BE91209B8E7000EA2F6A /* TimeInterval+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +62,7 @@
 		CFA8744B2090ACFA002E8ADE /* Workout.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Workout.storyboard; sourceTree = "<group>"; };
 		CFDF0E9C208B11B500AD2F25 /* WorkoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTableViewCell.swift; sourceTree = "<group>"; };
 		CFDF0E9D208B11B500AD2F25 /* WorkoutTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkoutTableViewCell.xib; sourceTree = "<group>"; };
-		CFE807FE208F743F00637F4A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CFF1BE91209B8E7000EA2F6A /* TimeInterval+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +173,7 @@
 			children = (
 				CFA0FF9A20949ED3006299D1 /* DateFormatter+Extension.swift */,
 				CF02DAD2209B421400EBC158 /* UIColor+Extension.swift */,
+				CFF1BE91209B8E7000EA2F6A /* TimeInterval+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -202,7 +203,6 @@
 			children = (
 				CF3BA88F209AF7A10098804E /* Components */,
 				CFA0FF9920949EBB006299D1 /* Extension */,
-				CFE807FD208F743200637F4A /* Common */,
 				CF4263942089F0B700312C0F /* Helper */,
 				CFE80800208F764000637F4A /* ViewController */,
 				CFDF0E9B208B118B00AD2F25 /* UITableViewCell */,
@@ -217,14 +217,6 @@
 				CFDF0E9D208B11B500AD2F25 /* WorkoutTableViewCell.xib */,
 			);
 			path = UITableViewCell;
-			sourceTree = "<group>";
-		};
-		CFE807FD208F743200637F4A /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				CFE807FE208F743F00637F4A /* Constants.swift */,
-			);
-			path = Common;
 			sourceTree = "<group>";
 		};
 		CFE80800208F764000637F4A /* ViewController */ = {
@@ -380,13 +372,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFE807FF208F743F00637F4A /* Constants.swift in Sources */,
 				CF32DD1A208618490088395E /* WorkoutViewController.swift in Sources */,
 				CFA0FF9B20949ED3006299D1 /* DateFormatter+Extension.swift in Sources */,
 				CF02DAD3209B421400EBC158 /* UIColor+Extension.swift in Sources */,
 				CF4263962089F0DD00312C0F /* HealthStore.swift in Sources */,
 				CF32DD18208618490088395E /* AppDelegate.swift in Sources */,
 				CFDF0E9E208B11B500AD2F25 /* WorkoutTableViewCell.swift in Sources */,
+				CFF1BE92209B8E7000EA2F6A /* TimeInterval+Extension.swift in Sources */,
 				CF3BA88D209AF2BE0098804E /* DetailViewController.swift in Sources */,
 				CF3BA891209AF7BA0098804E /* BalloonMarker.swift in Sources */,
 			);

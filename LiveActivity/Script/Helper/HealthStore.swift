@@ -14,6 +14,8 @@ typealias QueryResultsHanlder = (HKSampleQuery, [HKSample]?, Error?) -> Void
 class HealthStore {
 
     static let shared = HealthStore()
+    static let degreeUnit = HKUnit.degreeCelsius()
+    static let energyUnit = HKUnit.kilocalorie()
     static let bpmUnit = HKUnit(from: "count/min")
 
     private let healthStore = HKHealthStore()

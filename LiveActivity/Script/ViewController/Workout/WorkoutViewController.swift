@@ -55,7 +55,7 @@ class WorkoutViewController: UITableViewController {
         let predicate = HKQuery.predicateForWorkouts(with: .other)
         HealthStore.shared.queryExecute(sampleType: type, predicate: predicate) { [weak self] (query, samples, error) in
             guard let wself = self, let workouts = samples as? [HKWorkout], error == nil else { return }
-            wself.workouts = workouts.reversed()
+            wself.workouts = workouts
             wself.workouts.forEach { wself.getHeartRates(workout: $0) }
             DispatchQueue.main.async {
                 wself.tableView.reloadData()
@@ -120,6 +120,7 @@ extension WorkoutViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         let detailViewController = DetailViewController()
         detailViewController.workout = workouts[indexPath.row]
+        detailViewController.statistic = statistics[indexPath.row]
         navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
