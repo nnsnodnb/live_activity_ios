@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF02DAD3209B421400EBC158 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02DAD2209B421400EBC158 /* UIColor+Extension.swift */; };
 		CF32DD18208618490088395E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF32DD17208618490088395E /* AppDelegate.swift */; };
 		CF32DD1A208618490088395E /* WorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF32DD19208618490088395E /* WorkoutViewController.swift */; };
 		CF32DD1F2086184A0088395E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF32DD1E2086184A0088395E /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 		CF3BA882209A192E0098804E /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CF3BA881209A192E0098804E /* Settings.bundle */; };
 		CF3BA88D209AF2BE0098804E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3BA88B209AF2BE0098804E /* DetailViewController.swift */; };
 		CF3BA88E209AF2BE0098804E /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF3BA88C209AF2BE0098804E /* DetailViewController.xib */; };
+		CF3BA891209AF7BA0098804E /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3BA890209AF7BA0098804E /* BalloonMarker.swift */; };
 		CF4263962089F0DD00312C0F /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4263952089F0DD00312C0F /* HealthStore.swift */; };
 		CFA0FF9B20949ED3006299D1 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0FF9A20949ED3006299D1 /* DateFormatter+Extension.swift */; };
 		CFA8744C2090ACFA002E8ADE /* Workout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFA8744B2090ACFA002E8ADE /* Workout.storyboard */; };
@@ -36,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CF02DAD2209B421400EBC158 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		CF32DD14208618490088395E /* LiveActivity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveActivity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF32DD17208618490088395E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF32DD19208618490088395E /* WorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +54,7 @@
 		CF3BA881209A192E0098804E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		CF3BA88B209AF2BE0098804E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		CF3BA88C209AF2BE0098804E /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		CF3BA890209AF7BA0098804E /* BalloonMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
 		CF4263952089F0DD00312C0F /* HealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStore.swift; sourceTree = "<group>"; };
 		CFA0FF9A20949ED3006299D1 /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
 		CFA8744B2090ACFA002E8ADE /* Workout.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Workout.storyboard; sourceTree = "<group>"; };
@@ -144,6 +148,14 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
+		CF3BA88F209AF7A10098804E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				CF3BA890209AF7BA0098804E /* BalloonMarker.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		CF4263942089F0B700312C0F /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				CFA0FF9A20949ED3006299D1 /* DateFormatter+Extension.swift */,
+				CF02DAD2209B421400EBC158 /* UIColor+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -183,6 +196,7 @@
 		CFA8744F2090AE28002E8ADE /* Script */ = {
 			isa = PBXGroup;
 			children = (
+				CF3BA88F209AF7A10098804E /* Components */,
 				CFA0FF9920949EBB006299D1 /* Extension */,
 				CFE807FD208F743200637F4A /* Common */,
 				CF4263942089F0B700312C0F /* Helper */,
@@ -226,7 +240,6 @@
 			buildConfigurationList = CF32DD312086184A0088395E /* Build configuration list for PBXNativeTarget "LiveActivity" */;
 			buildPhases = (
 				CF32DD10208618490088395E /* Sources */,
-				CF3BA883209A1CD60098804E /* Run Script (PlistBuddy) */,
 				CF32DD11208618490088395E /* Frameworks */,
 				CF32DD12208618490088395E /* Resources */,
 				CF3BA87F209A17D10098804E /* Run Script (Carthage) */,
@@ -355,20 +368,6 @@
 			shellPath = /bin/sh;
 			shellScript = "if [ ! -e /usr/local/bin/license-plist ]; then\nexit 0\nfi\nif [ $CONFIGURATION = \"Debug\" ]; then\ncd $SRCROOT\n/usr/local/bin/license-plist --add-version-numbers --output-path $PRODUCT_NAME/Resource/Settings.bundle --cartfile-path Cartfile --github-token 13a20aba41ff05a71cd359be237192699e3a97a8\nfi";
 		};
-		CF3BA883209A1CD60098804E /* Run Script (PlistBuddy) */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run Script (PlistBuddy)";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "APP_VERSION=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" $PRODUCT_SETTINGS_PATH)\n/usr/libexec/PlistBuddy -c \"Set :PreferenceSpecifiers:1:DefaultValue ${APP_VERSION}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Settings.bundle/Root.plist\"\n\nBUILD_NUMBER=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" $PRODUCT_SETTINGS_PATH)\n/usr/libexec/PlistBuddy -c \"Set :PreferenceSpecifiers:2:DefaultValue ${BUILD_NUMBER}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Settings.bundle/Root.plist\"";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -379,10 +378,12 @@
 				CFE807FF208F743F00637F4A /* Constants.swift in Sources */,
 				CF32DD1A208618490088395E /* WorkoutViewController.swift in Sources */,
 				CFA0FF9B20949ED3006299D1 /* DateFormatter+Extension.swift in Sources */,
+				CF02DAD3209B421400EBC158 /* UIColor+Extension.swift in Sources */,
 				CF4263962089F0DD00312C0F /* HealthStore.swift in Sources */,
 				CF32DD18208618490088395E /* AppDelegate.swift in Sources */,
 				CFDF0E9E208B11B500AD2F25 /* WorkoutTableViewCell.swift in Sources */,
 				CF3BA88D209AF2BE0098804E /* DetailViewController.swift in Sources */,
+				CF3BA891209AF7BA0098804E /* BalloonMarker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

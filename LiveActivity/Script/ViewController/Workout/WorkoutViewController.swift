@@ -65,7 +65,7 @@ class WorkoutViewController: UITableViewController {
         let query = HKStatisticsQuery(quantityType: type, quantitySamplePredicate: predicate, options: [.discreteAverage, .discreteMin, .discreteMax]) { [weak self] (query, statistic, error) in
             guard let wself = self, let statistic = statistic, error == nil else { return }
             wself.statistics.append(statistic)
-            print(DateFormatter.display.string(from: statistic.startDate))
+            print(DateFormatter.debug.string(from: statistic.startDate))
             print("最低値 \(statistic.minimumQuantity()?.doubleValue(for: HealthStore.bpmUnit) ?? 0) bpm")
             print("最高値 \(statistic.maximumQuantity()?.doubleValue(for: HealthStore.bpmUnit) ?? 0) bpm")
             print("平均値 \(statistic.averageQuantity()?.doubleValue(for: HealthStore.bpmUnit) ?? 0) bpm")
@@ -96,17 +96,20 @@ extension WorkoutViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         selectWorkout = workouts[indexPath.row]
-        let alert = UIAlertController(title: "タイトルを入力", message: nil, preferredStyle: .alert)
-        alert.addTextField { [unowned self] (textField) in
-            let dateKey = DateFormatter.standard.string(from: self.selectWorkout!.startDate)
-            textField.text = UserDefaults.standard.string(forKey: dateKey)
-            textField.delegate = self
-        }
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        alert.addAction(UIAlertAction(title: "キャンセル", style: .cancel, handler: nil))
-        DispatchQueue.main.async { [unowned self] in
-            self.present(alert, animated: true, completion: nil)
-        }
+        let detailViewController = DetailViewController()
+        detailViewController.workout = selectWorkout
+        navigationController?.pushViewController(detailViewController, animated: true)
+//        let alert = UIAlertController(title: "タイトルを入力", message: nil, preferredStyle: .alert)
+//        alert.addTextField { [unowned self] (textField) in
+//            let dateKey = DateFormatter.standard.string(from: self.selectWorkout!.startDate)
+//            textField.text = UserDefaults.standard.string(forKey: dateKey)
+//            textField.delegate = self
+//        }
+//        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//        alert.addAction(UIAlertAction(title: "キャンセル", style: .cancel, handler: nil))
+//        DispatchQueue.main.async { [unowned self] in
+//            self.present(alert, animated: true, completion: nil)
+//        }
     }
 }
 

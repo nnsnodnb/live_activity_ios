@@ -19,7 +19,7 @@ extension DateFormatter {
         return formatter
     }
 
-    static var display: DateFormatter {
+    static var debug: DateFormatter {
         let formatter = DateFormatter()
         formatter.calendar = Calendar(identifier: .gregorian)
         formatter.timeZone = NSTimeZone.system
