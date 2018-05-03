@@ -108,8 +108,8 @@ class DetailViewController: UIViewController {
         chartView.delegate = self
         chartView.chartDescription?.enabled = false
         chartView.dragEnabled = true
-        chartView.setScaleEnabled(true)
-        chartView.pinchZoomEnabled = true
+        chartView.setScaleEnabled(false)
+        chartView.pinchZoomEnabled = false
 
         let llXAxis = ChartLimitLine(limit: 0)
         llXAxis.lineWidth = 4
