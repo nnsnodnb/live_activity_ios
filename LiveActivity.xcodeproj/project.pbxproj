@@ -15,6 +15,8 @@
 		CF32DD3A208618630088395E /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF32DD39208618630088395E /* HealthKit.framework */; };
 		CF3BA87E209A17C30098804E /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF3BA87D209A17C30098804E /* Charts.framework */; };
 		CF3BA882209A192E0098804E /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CF3BA881209A192E0098804E /* Settings.bundle */; };
+		CF3BA88D209AF2BE0098804E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3BA88B209AF2BE0098804E /* DetailViewController.swift */; };
+		CF3BA88E209AF2BE0098804E /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF3BA88C209AF2BE0098804E /* DetailViewController.xib */; };
 		CF4263962089F0DD00312C0F /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4263952089F0DD00312C0F /* HealthStore.swift */; };
 		CFA0FF9B20949ED3006299D1 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0FF9A20949ED3006299D1 /* DateFormatter+Extension.swift */; };
 		CFA8744C2090ACFA002E8ADE /* Workout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFA8744B2090ACFA002E8ADE /* Workout.storyboard */; };
@@ -47,6 +49,8 @@
 		CF32DD39208618630088395E /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		CF3BA87D209A17C30098804E /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = Carthage/Build/iOS/Charts.framework; sourceTree = "<group>"; };
 		CF3BA881209A192E0098804E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		CF3BA88B209AF2BE0098804E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		CF3BA88C209AF2BE0098804E /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		CF4263952089F0DD00312C0F /* HealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStore.swift; sourceTree = "<group>"; };
 		CFA0FF9A20949ED3006299D1 /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
 		CFA8744B2090ACFA002E8ADE /* Workout.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Workout.storyboard; sourceTree = "<group>"; };
@@ -123,6 +127,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CF3BA889209AF0CD0098804E /* Workout */ = {
+			isa = PBXGroup;
+			children = (
+				CF32DD19208618490088395E /* WorkoutViewController.swift */,
+			);
+			path = Workout;
+			sourceTree = "<group>";
+		};
+		CF3BA88A209AF0D60098804E /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				CF3BA88B209AF2BE0098804E /* DetailViewController.swift */,
+				CF3BA88C209AF2BE0098804E /* DetailViewController.xib */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		CF4263942089F0B700312C0F /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,7 +212,8 @@
 		CFE80800208F764000637F4A /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				CF32DD19208618490088395E /* WorkoutViewController.swift */,
+				CF3BA889209AF0CD0098804E /* Workout */,
+				CF3BA88A209AF0D60098804E /* Detail */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -286,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF32DD222086184A0088395E /* LaunchScreen.storyboard in Resources */,
+				CF3BA88E209AF2BE0098804E /* DetailViewController.xib in Resources */,
 				CF32DD1F2086184A0088395E /* Assets.xcassets in Resources */,
 				CF3BA882209A192E0098804E /* Settings.bundle in Resources */,
 				CFA8744C2090ACFA002E8ADE /* Workout.storyboard in Resources */,
@@ -359,6 +382,7 @@
 				CF4263962089F0DD00312C0F /* HealthStore.swift in Sources */,
 				CF32DD18208618490088395E /* AppDelegate.swift in Sources */,
 				CFDF0E9E208B11B500AD2F25 /* WorkoutTableViewCell.swift in Sources */,
+				CF3BA88D209AF2BE0098804E /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
