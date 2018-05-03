@@ -89,7 +89,7 @@ class DetailViewController: UIViewController {
     private func setDataSet() {
         let values: [ChartDataEntry] = (0..<statistics.count).map {
             let value = statistics[$0].averageQuantity()?.doubleValue(for: HealthStore.bpmUnit) ?? 0
-            return ChartDataEntry(x: Double($0), y: value)
+            return ChartDataEntry(x: Double($0), y: Double(String(format: "%.2f", value))!)
         }
 
         let set = LineChartDataSet(values: values, label: "Heart Rate")
