@@ -22,7 +22,13 @@
                             <outlet property="delegate" destination="uAy-1X-cSV" id="bZ2-mP-lhf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="推し事一覧" id="KzC-Li-uDS"/>
+                    <navigationItem key="navigationItem" title="推し事一覧" id="KzC-Li-uDS">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="YeH-Ob-fai">
+                            <connections>
+                                <action selector="onTapRefreshButton:" destination="uAy-1X-cSV" id="r96-aj-2Y9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kQ5-v4-zCf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
