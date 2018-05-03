@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CF02DAD3209B421400EBC158 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02DAD2209B421400EBC158 /* UIColor+Extension.swift */; };
+		CF02DADE209B5B9F00EBC158 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF02DADD209B5B9F00EBC158 /* SVProgressHUD.framework */; };
 		CF32DD18208618490088395E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF32DD17208618490088395E /* AppDelegate.swift */; };
 		CF32DD1A208618490088395E /* WorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF32DD19208618490088395E /* WorkoutViewController.swift */; };
 		CF32DD1F2086184A0088395E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF32DD1E2086184A0088395E /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		CF02DAD2209B421400EBC158 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		CF02DADD209B5B9F00EBC158 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
 		CF32DD14208618490088395E /* LiveActivity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveActivity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF32DD17208618490088395E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF32DD19208618490088395E /* WorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF02DADE209B5B9F00EBC158 /* SVProgressHUD.framework in Frameworks */,
 				CF3BA87E209A17C30098804E /* Charts.framework in Frameworks */,
 				CF32DD3A208618630088395E /* HealthKit.framework in Frameworks */,
 			);
@@ -125,6 +128,7 @@
 		CF32DD38208618630088395E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF02DADD209B5B9F00EBC158 /* SVProgressHUD.framework */,
 				CF3BA87D209A17C30098804E /* Charts.framework */,
 				CF32DD39208618630088395E /* HealthKit.framework */,
 			);
@@ -346,6 +350,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Charts.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SVProgressHUD.framework",
 			);
 			name = "Run Script (Carthage)";
 			outputPaths = (
