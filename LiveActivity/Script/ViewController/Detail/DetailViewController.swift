@@ -27,6 +27,9 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var maxHeartRateLabel: UILabel!
     @IBOutlet weak var averateHeartRateLabel: UILabel!
     @IBOutlet weak var chartView: LineChartView!
+    @IBOutlet weak var miniHeartRateButton: UIButton!
+    @IBOutlet weak var maxHeartRateButton: UIButton!
+    @IBOutlet weak var averageHeartRateButton: UIButton!
 
     var workout: HKWorkout!
     var statistic: HKStatistics!
@@ -47,6 +50,7 @@ class DetailViewController: UIViewController {
         getHeartRates()
         chartView.isHidden = true
         setupChartView()
+        averageHeartRateButton.backgroundColor = UIColor.mainYellow
     }
 
     override func didReceiveMemoryWarning() {
@@ -186,6 +190,29 @@ class DetailViewController: UIViewController {
             SVProgressHUD.dismiss()
             self.chartView.data = data
         }
+    }
+
+    // MARK: - IBAction
+
+    @IBAction func onTapMiniHeartRateButton(_ sender: Any) {
+        heartRateType = .minimum
+        miniHeartRateButton.backgroundColor = UIColor.mainYellow
+        maxHeartRateButton.backgroundColor = UIColor.mainOrange
+        averageHeartRateButton.backgroundColor = UIColor.mainOrange
+    }
+
+    @IBAction func onTapMaxHeartRateButton(_ sender: Any) {
+        heartRateType = .maximum
+        miniHeartRateButton.backgroundColor = UIColor.mainOrange
+        maxHeartRateButton.backgroundColor = UIColor.mainYellow
+        averageHeartRateButton.backgroundColor = UIColor.mainOrange
+    }
+
+    @IBAction func onTapAverageHeartRateButton(_ sender: Any) {
+        heartRateType = .average
+        miniHeartRateButton.backgroundColor = UIColor.mainOrange
+        maxHeartRateButton.backgroundColor = UIColor.mainOrange
+        averageHeartRateButton.backgroundColor = UIColor.mainYellow
     }
 }
 

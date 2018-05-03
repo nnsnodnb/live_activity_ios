@@ -18,4 +18,7 @@ extension UIColor {
         let b = CGFloat(Int(v[4] + v[5], radix: 16) ?? 0) / 255.0
         self.init(red: r, green: g, blue: b, alpha: alpha)
     }
+
+    static var mainOrange: UIColor { return UIColor(hex: "fca24f", alpha: 1.0) }
+    static var mainYellow: UIColor { return UIColor(hex: "fcdc4f", alpha: 1.0) }
 }

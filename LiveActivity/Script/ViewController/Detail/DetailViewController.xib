@@ -15,24 +15,27 @@
                 <outlet property="activityNameLabel" destination="9dh-u4-dd8" id="Sc9-E7-EfY"/>
                 <outlet property="activityPlayTimeLabel" destination="k0P-Bo-enJ" id="CH9-TK-l5Y"/>
                 <outlet property="activityTimeLabel" destination="Zr3-cV-VqK" id="PoT-AQ-9MR"/>
+                <outlet property="averageHeartRateButton" destination="wzb-io-aQX" id="Dz4-ZB-Hcn"/>
                 <outlet property="averateHeartRateLabel" destination="EdO-TP-HP4" id="0Af-fm-62q"/>
                 <outlet property="chartView" destination="5VN-Dx-Q89" id="nb2-zi-pbS"/>
+                <outlet property="maxHeartRateButton" destination="i17-xt-R2Y" id="HtV-FP-HYV"/>
                 <outlet property="maxHeartRateLabel" destination="hjE-WN-8us" id="1qf-02-NrN"/>
                 <outlet property="minHeartRateLabel" destination="2i3-zc-3kI" id="bcq-vy-FTg"/>
+                <outlet property="miniHeartRateButton" destination="W8x-Wf-kgQ" id="BzN-nK-ZD1"/>
                 <outlet property="totalCalorieLabel" destination="ZHn-Kr-6Ej" id="Yxl-eS-6Bo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="530"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pLb-Gq-ZTX">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="530"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="QXp-BB-cb1">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="518.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="584.5"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zxF-I3-sve">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="156.5"/>
@@ -174,6 +177,79 @@
                                         <constraint firstAttribute="height" constant="230" id="TPb-Tk-deL"/>
                                     </constraints>
                                 </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qlf-lG-VUk">
+                                    <rect key="frame" x="0.0" y="526.5" width="375" height="58"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="jud-QP-GSI">
+                                            <rect key="frame" x="31.5" y="14" width="312" height="30"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W8x-Wf-kgQ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="88" height="30"/>
+                                                    <color key="backgroundColor" red="0.99215686270000003" green="0.63857329510000005" blue="0.24488320890000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="88" id="E6d-1A-oTC"/>
+                                                    </constraints>
+                                                    <state key="normal" title="最低心拍数">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="4"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="onTapMiniHeartRateButton:" destination="-1" eventType="touchUpInside" id="kf0-Ff-EIr"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i17-xt-R2Y">
+                                                    <rect key="frame" x="112" y="0.0" width="88" height="30"/>
+                                                    <color key="backgroundColor" red="0.99215686270000003" green="0.63857329510000005" blue="0.24488320890000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="88" id="HfH-Od-vRk"/>
+                                                    </constraints>
+                                                    <state key="normal" title="最大心拍数">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="4"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="onTapMaxHeartRateButton:" destination="-1" eventType="touchUpInside" id="HCa-gS-VF2"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wzb-io-aQX">
+                                                    <rect key="frame" x="224" y="0.0" width="88" height="30"/>
+                                                    <color key="backgroundColor" red="0.99215686270000003" green="0.63857329510000005" blue="0.24488320890000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="88" id="pfl-iP-1k2"/>
+                                                    </constraints>
+                                                    <state key="normal" title="平均心拍数">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="4"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="onTapAverageHeartRateButton:" destination="-1" eventType="touchUpInside" id="PbT-tq-I2y"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="jud-QP-GSI" secondAttribute="bottom" constant="14" id="4BD-5i-wvZ"/>
+                                        <constraint firstItem="jud-QP-GSI" firstAttribute="centerX" secondItem="Qlf-lG-VUk" secondAttribute="centerX" id="PSG-9a-zoU"/>
+                                        <constraint firstItem="jud-QP-GSI" firstAttribute="top" secondItem="Qlf-lG-VUk" secondAttribute="top" constant="14" id="ppx-3G-iQa"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                         </stackView>
                     </subviews>
@@ -196,7 +272,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="37.5" y="37"/>
+            <point key="canvasLocation" x="37.5" y="73.5"/>
         </view>
     </objects>
 </document>
