@@ -78,7 +78,7 @@ class DetailViewController: UIViewController {
         SVProgressHUD.show()
         var dateComponents = DateComponents()
         dateComponents.minute = 5
-        let collectionQuery = HKStatisticsCollectionQuery(quantityType: HKObjectType.quantityType(forIdentifier: .heartRate)!, quantitySamplePredicate: nil, options: [.discreteAverage], anchorDate: workout.startDate, intervalComponents: dateComponents)
+        let collectionQuery = HKStatisticsCollectionQuery(quantityType: HKObjectType.quantityType(forIdentifier: .heartRate)!, quantitySamplePredicate: nil, options: [.discreteAverage, .discreteMin, .discreteMax], anchorDate: workout.startDate, intervalComponents: dateComponents)
         collectionQuery.initialResultsHandler = { [weak self] (query, result, error) in
             guard let wself = self, let result = result, error == nil else { return }
             result.enumerateStatistics(from: wself.workout.startDate, to: wself.workout.endDate) { (statistic, stop) in
@@ -104,12 +104,15 @@ class DetailViewController: UIViewController {
         chartView.xAxis.gridLineDashLengths = [10, 10]
         chartView.xAxis.gridLineDashPhase = 0
 
-        let leftAxis = chartView.leftAxis
-        leftAxis.removeAllLimitLines()
-        leftAxis.axisMaximum = 250
-        leftAxis.axisMinimum = 0
-        leftAxis.gridLineDashLengths = [5, 5]
-        leftAxis.drawLimitLinesBehindDataEnabled = true
+        chartView.leftAxis.removeAllLimitLines()
+        chartView.leftAxis.axisMaximum = (statistic.maximumQuantity()?.doubleValue(for: HealthStore.bpmUnit) ?? 0) + 10
+        var minimum = (statistic.minimumQuantity()?.doubleValue(for: HealthStore.bpmUnit) ?? 0)
+        if minimum != 0 {
+            minimum -= 10
+        }
+        chartView.leftAxis.axisMinimum = minimum
+        chartView.leftAxis.gridLineDashLengths = [5, 5]
+        chartView.leftAxis.drawLimitLinesBehindDataEnabled = true
 
         chartView.rightAxis.enabled = false
 
@@ -127,12 +130,14 @@ class DetailViewController: UIViewController {
     }
 
     private func setDataSet() {
+        // nilのものを予め削除しておく
+        let statistics = self.statistics.filter { $0.averageQuantity() != nil }
         let values: [ChartDataEntry] = (0..<statistics.count).map {
             let value = statistics[$0].averageQuantity()?.doubleValue(for: HealthStore.bpmUnit) ?? 0
             return ChartDataEntry(x: Double($0), y: Double(String(format: "%.2f", value))!)
         }
 
-        let set = LineChartDataSet(values: values, label: "Heart Rate")
+        let set = LineChartDataSet(values: values, label: "心拍数(5分毎の平均)")
         set.drawIconsEnabled = false
         set.lineDashLengths = [5, 2.5]
         set.highlightLineDashLengths = [5, 2.5]
