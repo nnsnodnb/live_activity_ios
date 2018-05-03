@@ -9,6 +9,7 @@
 import UIKit
 import Charts
 import HealthKit
+import SVProgressHUD
 
 class DetailViewController: UIViewController {
 
@@ -23,6 +24,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getHeartRates()
+        chartView.isHidden = true
         setupChartView()
     }
 
@@ -33,6 +35,7 @@ class DetailViewController: UIViewController {
     // MARK: - Private method
 
     private func getHeartRates() {
+        SVProgressHUD.show()
         var dateComponents = DateComponents()
         dateComponents.minute = 5
         let collectionQuery = HKStatisticsCollectionQuery(quantityType: HKObjectType.quantityType(forIdentifier: .heartRate)!, quantitySamplePredicate: nil, options: [.discreteAverage], anchorDate: workout.startDate, intervalComponents: dateComponents)
@@ -114,6 +117,8 @@ class DetailViewController: UIViewController {
         let data = LineChartData(dataSet: set)
 
         DispatchQueue.main.async {
+            self.chartView.isHidden = false
+            SVProgressHUD.dismiss()
             self.chartView.data = data
         }
     }

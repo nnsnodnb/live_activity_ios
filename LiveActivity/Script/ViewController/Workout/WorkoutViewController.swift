@@ -8,6 +8,7 @@
 
 import UIKit
 import HealthKit
+import SVProgressHUD
 
 class WorkoutViewController: UITableViewController {
 
@@ -47,6 +48,9 @@ class WorkoutViewController: UITableViewController {
     }
 
     private func getWorkouts() {
+        DispatchQueue.main.async {
+            SVProgressHUD.show()
+        }
         let type = HKWorkoutType.workoutType()
         let predicate = HKQuery.predicateForWorkouts(with: .other)
         HealthStore.shared.queryExecute(sampleType: type, predicate: predicate) { [weak self] (query, samples, error) in
@@ -55,6 +59,7 @@ class WorkoutViewController: UITableViewController {
             wself.workouts.forEach { wself.getHeartRates(workout: $0) }
             DispatchQueue.main.async {
                 wself.tableView.reloadData()
+                SVProgressHUD.dismiss()
             }
         }
     }
