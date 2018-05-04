@@ -22,7 +22,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var activityNameLabel: UILabel!
     @IBOutlet weak var activityTimeLabel: UILabel!
     @IBOutlet weak var activityPlayTimeLabel: UILabel!
-    @IBOutlet weak var totalCalorieLabel: UILabel!
+    @IBOutlet weak var activeCalorieLabel: UILabel!
     @IBOutlet weak var minHeartRateLabel: UILabel!
     @IBOutlet weak var maxHeartRateLabel: UILabel!
     @IBOutlet weak var averateHeartRateLabel: UILabel!
@@ -82,7 +82,7 @@ class DetailViewController: UIViewController {
 
         activityPlayTimeLabel.text = "\(workout.duration.convertToDateTime(format: "%d時間%0.2d分%0.2d秒"))"
 
-        totalCalorieLabel.text = String(format: "%.2f カロリー", workout.totalEnergyBurned?.doubleValue(for: HealthStore.energyUnit) ?? 0)
+        activeCalorieLabel.text = String(format: "%.2f カロリー", workout.totalEnergyBurned?.doubleValue(for: HealthStore.energyUnit) ?? 0)
 
         minHeartRateLabel.text = String(format: "%.0fBPM", statistic.minimumQuantity()?.doubleValue(for: HealthStore.bpmUnit) ?? 0)
         maxHeartRateLabel.text = String(format: "%.0fBPM", statistic.maximumQuantity()?.doubleValue(for: HealthStore.bpmUnit) ?? 0)
