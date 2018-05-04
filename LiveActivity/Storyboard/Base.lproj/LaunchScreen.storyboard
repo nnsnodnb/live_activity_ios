@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,19 +21,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="v1Z-r4-9aZ">
-                                <rect key="frame" x="0.0" y="146" width="375" height="375"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="v1Z-r4-9aZ" secondAttribute="height" multiplier="1:1" id="5gM-O3-Am9"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="v1Z-r4-9aZ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="v1Z-r4-9aZ" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailing" id="4lx-69-M8a"/>
-                            <constraint firstItem="v1Z-r4-9aZ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="5D9-YS-ULn"/>
-                            <constraint firstItem="v1Z-r4-9aZ" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="cVt-m5-U3w"/>
-                            <constraint firstItem="v1Z-r4-9aZ" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="wmb-zo-O6a"/>
+                            <constraint firstAttribute="trailing" secondItem="v1Z-r4-9aZ" secondAttribute="trailing" id="5rY-RM-V4V"/>
+                            <constraint firstItem="v1Z-r4-9aZ" firstAttribute="bottom" secondItem="Ze5-6b-2t3" secondAttribute="bottom" id="Icg-d2-u0p"/>
+                            <constraint firstItem="v1Z-r4-9aZ" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="c4V-9a-PAK"/>
+                            <constraint firstItem="v1Z-r4-9aZ" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="nbI-5e-CjJ"/>
                         </constraints>
                     </view>
                 </viewController>
