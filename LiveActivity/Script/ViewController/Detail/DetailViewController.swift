@@ -27,6 +27,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var maxHeartRateLabel: UILabel!
     @IBOutlet weak var averateHeartRateLabel: UILabel!
     @IBOutlet weak var chartView: LineChartView!
+    @IBOutlet weak var heartRateButtonView: UIView!
     @IBOutlet weak var miniHeartRateButton: UIButton!
     @IBOutlet weak var maxHeartRateButton: UIButton!
     @IBOutlet weak var averageHeartRateButton: UIButton!
@@ -49,6 +50,7 @@ class DetailViewController: UIViewController {
         setupLabels()
         getHeartRates()
         chartView.isHidden = true
+        heartRateButtonView.isHidden = true
         setupChartView()
         averageHeartRateButton.backgroundColor = UIColor.mainYellow
     }
@@ -187,6 +189,7 @@ class DetailViewController: UIViewController {
 
         DispatchQueue.main.async {
             self.chartView.isHidden = false
+            self.heartRateButtonView.isHidden = false
             SVProgressHUD.dismiss()
             self.chartView.data = data
         }

@@ -19,6 +19,7 @@
                 <outlet property="averageHeartRateButton" destination="wzb-io-aQX" id="Dz4-ZB-Hcn"/>
                 <outlet property="averateHeartRateLabel" destination="EdO-TP-HP4" id="0Af-fm-62q"/>
                 <outlet property="chartView" destination="5VN-Dx-Q89" id="nb2-zi-pbS"/>
+                <outlet property="heartRateButtonView" destination="Qlf-lG-VUk" id="1ts-1j-xQ0"/>
                 <outlet property="maxHeartRateButton" destination="i17-xt-R2Y" id="HtV-FP-HYV"/>
                 <outlet property="maxHeartRateLabel" destination="hjE-WN-8us" id="1qf-02-NrN"/>
                 <outlet property="minHeartRateLabel" destination="2i3-zc-3kI" id="bcq-vy-FTg"/>
