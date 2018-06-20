@@ -1,9 +1,0 @@
-{
-  "commitish" : "v3.1.1",
-  "iOS" : [
-    {
-      "name" : "Charts",
-      "hash" : "87ae73c3880a7b7cd4dc3097af8aada88e49d81c699f79cd939e0268f733f44a"
-    }
-  ]
-}
